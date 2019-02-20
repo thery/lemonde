@@ -1,3 +1,6 @@
+-R . lemonde
+-arg -w -arg -notation-overridden
+
 allumette.v
 chapeau.v
 corde.v
