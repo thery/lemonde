@@ -301,7 +301,7 @@ have modD9 : n %% 10 = 9.
 have posSD : 0 < n.+1 %/ 10.
   by rewrite divn_gt0 // (leq_trans DLm).
 rewrite modD9; move: (IH _ nLSD posSD).
-have [-> /=]: (n.+1 %/ 10) = (n %/ 10).+1.
+have -> /=: (n.+1 %/ 10) = (n %/ 10).+1.
   by rewrite {1}[n](divn_eq n 10) -addnS modD9 divnMDl ?addn1.
 case: decrr => [|[[HH |a1 l1 <-]|a l <-]] //=.
   by case: (m) => [|m1] //=; case: (_ < _) => //; case: nat2l2.

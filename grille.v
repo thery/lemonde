@@ -235,7 +235,7 @@ case: (ltnP (p^-1%g i) (p^-1%g a)) => [iLa|].
   by exists [:: i, a & l]; rewrite mem_head /ordLS /= iLa.
 rewrite leq_eqVlt=> /orP[|aLi].
   by move/val_eqP/perm_inj=> aLi; move: iNal; rewrite aLi in_cons eqxx.
-have [l1 [/andP[l1I ppl1]]] := IH _ oNl Ol.
+have [l1 /andP[l1I ppl1]] := IH _ oNl Ol.
 exists (a :: l1).
 rewrite in_cons mem_map ?l1I ?orbT; last by move=> i1 j1 [].
 case: (l1) ppl1 (mem_insertl l1I) => // a1 l2.
