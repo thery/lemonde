@@ -1,0 +1,23 @@
+opam-version: "1.2"
+name: "lemonde"
+maintainer: "Laurent.Thery@inria.fr"
+homepage: "https://github.com/thery/lemonde"
+bug-reports: "https://github.com/thery/lemonde/issues"
+dev-repo: "git+https:https://github.com/thery/lemonde"
+license: "CeCILL-B"
+authors: ["Laurent Théry"]
+build: [
+  [make "-j%{jobs}%"]
+]
+install: [
+  [make "install"]
+]
+remove: ["rm" "-R" "%{lib}%/coq/user-contrib/lemonde"]
+depends: [
+  "coq" {(>= "8.9")}
+  "coq-mathcomp-ssreflect" { (>= "1.7") }
+  "coq-mathcomp-algebra" { (>= "1.7") }
+  "coq-mathcomp-fingroup" { (>= "1.7") }
+]
+tags: [
+]
