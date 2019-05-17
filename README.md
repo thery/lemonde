@@ -3,7 +3,7 @@
 
 ## Les énigmes du Monde
 
-Une tentative de formaliser en Coq les problèmes proposées par le journal
+Une tentative de formaliser en Coq les problèmes proposés par le journal
 Le Monde en 2013 comme énigmes mathématiques.
 
 [Les vidéos](http://www-sop.inria.fr/marelle/Laurent.Thery/LeMonde/index.html)
