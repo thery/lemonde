@@ -207,7 +207,7 @@ Qed.
 
 Lemma card_p1n2 n : #|{:n.+1.*2.+1.-palindrome}| = 9 * 10 ^ n.+1.
 Proof.
-have->: n.+1.*2.+1 = n.+1 + n.+2 by rewrite -addnn.
+have->: n.+1.*2.+1 = n.+1 + n.+2 by rewrite addnS addnn.
 rewrite expnS [10 * _]mulnC mulnA .
 rewrite -{1}[9]card_ord -[10]card_ord -card_tuple -!card_prod /=.
 rewrite -(card_codom (@mk_1n2_inj n)).

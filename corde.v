@@ -496,7 +496,7 @@ Qed.
 Definition perm_of n (f : {ffun 'I_n.+1 -> 'I_n.+1}) : 'S_n.+1 :=
   odflt 1%g [pick p | f == (pval p)].
 
-Lemma perm_ofE n (f:  {ffun 'I_n.+1 -> _}) : injective f -> perm_of f =1 f.
+Lemma perm_ofE n (f:  {ffun 'I_n.+1 -> 'I_n.+1}) : injective f -> perm_of f =1 f.
 Proof.
 move=> /injectiveP If i.
 pose p1 := Perm If.
