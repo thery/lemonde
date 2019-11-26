@@ -824,10 +824,10 @@ rewrite -card_perm_fix0.
 apply/eqP; rewrite eqn_leq; apply/andP; split.
   apply: leq_trans (subset_leq_card (imc2p _)).
   rewrite card_in_imset //= => p1 p2 p1I p2I p1Ep2.
-  by rewrite -[p1]S2pK /funcomp // p1Ep2 [X in X = _](@S2pK _  p2).
+  by rewrite -[p1]S2pK //= p1Ep2 [X in X = _](@S2pK _  p2).
 apply: leq_trans (subset_leq_card (imp2c _)).
 rewrite card_in_imset //= => p1 p2 p1I p2I p1Ep2.
-by rewrite -[p1]p2SK /funcomp // p1Ep2 [X in X = _](@p2SK _  p2).
+by rewrite -[p1]p2SK //= p1Ep2 [X in X = _](@p2SK _  p2).
 Qed.
 
 (******************************************************************************)

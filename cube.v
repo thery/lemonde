@@ -24,6 +24,7 @@ Proof.  by split => [x |x y ->| x y z -> ->]. Qed.
 
 Global Instance Roperators:
   @Ring_ops R 0%R 1%R +%R *%R  (fun x y => x - y)%R -%R (@eq R).
+Defined.
 
 Global Instance Rring: (@Ring _ _ _ _ _ _ _ _ Roperators).
 Proof.
@@ -148,7 +149,7 @@ let: Line (Point x1 y1 z1) (Point x2 y2 z2) _ := l in
 let : Point x3 y3 z3 := p in
   proportional (x1 - x2) (x1 - x3) (y1 - y2) (y1 - y3) (z1 - z2) (z1 - z3).
 
-Canonical on_line_predType := mkPredType on_line.
+Canonical on_line_predType := PredType on_line.
 
 (* Deux lignes parallèles   : l1 /[l] l2                                      *)
 
@@ -226,7 +227,7 @@ Qed.
 Definition l_on_plane (pl : plane) l :=
   let: Line p1 p2 _ := l in (on_plane pl p1) && (on_plane pl p2).
 
-Canonical l_on_plane_predType := mkPredType l_on_plane.
+Canonical l_on_plane_predType := PredType l_on_plane.
 
 Lemma l_on_planeE (p1 p2 : point) (L : p1 != p2) (P : plane) :
   p1 \on P -> p2 \on P -> Line L \in P.
@@ -257,10 +258,10 @@ move=> HH /(proportionalNZP _ _ _ Hp1) [k Hk].
 have kNZ : k != 0.
   by apply: contra Hp2; rewrite Hk => /eqP->; rewrite !mul0r.
 pose d4 := k^-1 * d2.
-have {P5}P5 : a1 * x3 + b1 * y3 + c1 * z3 = d4.
+have {}P5 : a1 * x3 + b1 * y3 + c1 * z3 = d4.
   apply: (mulfI kNZ); rewrite mulrA mulfV //; rewrite /d4 -P5.
   by case: Hk => -> -> ->; cring.
-have {P6}P6 : a1 * x4 + b1 * y4 + c1 * z4 = d4.
+have {}P6 : a1 * x4 + b1 * y4 + c1 * z4 = d4.
   apply: (mulfI kNZ); rewrite mulrA mulfV //; rewrite /d4 -P6.
   by case: Hk => -> -> ->; cring.
 pose u := a1 * b3 - a3 * b1.
@@ -366,7 +367,7 @@ Definition on_face (f : face) p :=
   if f == 4%N :> nat then [&& z == 0, 0 <= x <= 1 & 0 <= y <= 1] else
   [&& z == 1, 0 <= x <= 1 & 0 <= y <= 1].
 
-Canonical on_face_predType := mkPredType on_face.
+Canonical on_face_predType := PredType on_face.
 
 (* Plans associés aux faces du cube (les faces sont numérotées de 0 à 5)      *)
  

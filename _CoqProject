@@ -1,5 +1,6 @@
 -R . lemonde
 -arg -w -arg -notation-overridden
+-arg -w -arg -ambiguous-paths
 
 allumette.v
 chapeau.v
