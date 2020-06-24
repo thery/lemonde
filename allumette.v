@@ -82,7 +82,7 @@ Coercion fun_of_strategy : strategy >-> Funclass.
 Definition pick_first (h : heaps) : move := (find (predC1 0) h, 0). 
 
 Lemma valid_pick_first h : ~~ empty h -> valid_move h (pick_first h).
-Proof. by elim h => //= [] [|a]. Qed.
+Proof. by elim: h => //= [] [|a]. Qed.
 
 Definition strat0 := Strategy valid_pick_first.
 
@@ -304,7 +304,7 @@ have F2 (m : number) j : (0 <= j < i) && true ->
   rewrite andbT => /andP[_ jLi].
   have iE : i.-1.+1 = i by rewrite prednK // (leq_trans _ jLi).
   rewrite mulnA -expnS -subSn -1?ltnS iE //.
-rewrite (eq_bigr _ (F2 v)) -big_distrr /= addn0 odd_add odd_mul /= rewL.
+rewrite (eq_bigr _ (F2 v)) -big_distrr /= addn0 oddD odd_mul /= rewL.
 by case: nth.
 Qed.
 
@@ -454,7 +454,7 @@ Proof. by move=> n; rewrite num2nat_eqF0 /is_winning foldr_map unlock /=. Qed.
 Lemma is_winning_not_empty h : is_winning h -> ~ empty h.
 Proof.
 move/eqP=> NISW /eqP IE; case: NISW; rewrite IE.
-have-->: foldr maxn 0 (nseq (size h) 0) = 0 by elim: size => //= n ->.
+have ->: foldr maxn 0 (nseq (size h) 0) = 0 by elim: size => //= n ->.
 elim: size => //= n ->.
 have ->: [tuple] [+] F = ([tuple] + 0)%R by [].
 by rewrite addr0 [F]tuple0.
@@ -556,16 +556,16 @@ rewrite (nth_map 0) // -/n [X in (X + _)%R == _]addrAC.
 by rewrite addrN add0r addrN.
 Qed.
 
+
 (* En combinant les deux propriétés précédentes, la stratégie est gagnante!   *)
 
 Lemma w_strat_best h : is_winning h -> winning_strategy strat_best h.
 Proof.
 move=> iW g.
-elim: {g}size {-2}g (leqnn (size g)) h iW => [[]|n IH [|m1[|m2 g]]] //=.
-- by move=> _ h /is_winning_not_empty.
-- by move=> _ h /is_winning_not_empty.
-rewrite negbK ltnS => sLn h iW /and3P[H1 H2 H3] /andP[/eqP m1F FS].
-apply: IH FS => //; first by apply: ltnW.
+have [n leMn] := ubnP (size g); elim: n => // n IH in h iW g leMn *.
+case: g leMn => [_ /is_winning_not_empty |m1 [|m2 g]] //=.
+rewrite negbK ltnS => sLn /and3P[H1 H2 H3] /andP[/eqP m1F FS].
+apply: IH FS => //; last by rewrite ltnW.
 apply: nis_winning_is_winning => //.
 by rewrite m1F; apply: is_winning_nis_winning.
 Qed.

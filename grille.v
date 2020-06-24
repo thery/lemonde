@@ -277,7 +277,11 @@ apply/bigmax_leqP=> /= p _; rewrite -all_max_57 /all_max.
 have: (forall i : 'I_9 , i \in [::] -> 9 <= i) by [].
 have: ordLS p [::] by [].
 have: size ([::] : seq 'I_9) + 9 = 9 by [].
-elim: {3 10 13}9 [::] {17}0 => /= [|k IH] l v Es Ol Ltk.
+suff F n l m : 
+  size l + n = 9 -> ordLS p l -> (forall i : 'I_9, i \in l -> n <= i) ->
+  w_val p <= get_max n m (fun l0 : seq 'I_9 => w_val (f_of_l l0)) l.
+    by apply: F.
+elim: n l m => /= [|k IH] l v Es Ol Ltk.
   move/eqP: Es; rewrite addn0 (ordLS_enum Ol) => /eqP->.
   set f := f_of_l _; suff /w_val_eq-> : f =1 p by apply: leq_maxr.
   by move=> i; rewrite /f /f_of_l (nth_map ord0) ?size_enum_ord // nth_ord_enum.

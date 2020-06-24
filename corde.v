@@ -453,7 +453,9 @@ Qed.
 Lemma card_is_node n : #|'N[n.+1.*2]| = \prod_(i < n.+1) i.*2.+1.
 Proof.
 rewrite -is_nodeLE.
-elim: {1 8 9 10 11 12 13}(n.+1) (leqnn n.+1)=> [_ |k IH].
+suff L k : k <= n.+1 -> #|'N[ (n.+1).*2, k]| = \prod_(i < k) i.*2.+1.
+  by rewrite L //.
+elim: k => [_ |k IH].
   rewrite big_ord0; apply/eqP/cards1P; exists 1%g.
   apply/setP=> p; rewrite !inE.
   apply/forallP/eqP=> [Hf | -> x]; last by rewrite perm1.
