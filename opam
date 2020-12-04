@@ -15,9 +15,9 @@ install: [
 remove: ["rm" "-R" "%{lib}%/coq/user-contrib/lemonde"]
 depends: [
   "coq" {(>= "8.12")}
-  "coq-mathcomp-ssreflect" { (>= "1.11") }
-  "coq-mathcomp-algebra" { (>= "1.11") }
-  "coq-mathcomp-fingroup" { (>= "1.11") }
+  "coq-mathcomp-ssreflect" { (>= "1.12") }
+  "coq-mathcomp-algebra" { (>= "1.12") }
+  "coq-mathcomp-fingroup" { (>= "1.12") }
 ]
 tags: [
 ]

@@ -304,7 +304,7 @@ have F2 (m : number) j : (0 <= j < i) && true ->
   rewrite andbT => /andP[_ jLi].
   have iE : i.-1.+1 = i by rewrite prednK // (leq_trans _ jLi).
   rewrite mulnA -expnS -subSn -1?ltnS iE //.
-rewrite (eq_bigr _ (F2 v)) -big_distrr /= addn0 oddD odd_mul /= rewL.
+rewrite (eq_bigr _ (F2 v)) -big_distrr /= addn0 oddD oddM /= rewL.
 by case: nth.
 Qed.
 

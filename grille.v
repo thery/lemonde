@@ -171,7 +171,7 @@ Lemma ordLS_in n p a b (l : seq 'I_n) :
   ordLS p (a :: l) -> b \in l -> p^-1%g a < p^-1%g b.
 Proof.
 move=> oC bIl.
-have /subseq_order_path/(_ oC) : subseq [:: b] l by rewrite sub1seq.
+have /subseq_path/(_ oC) : subseq [:: b] l by rewrite sub1seq.
 by rewrite /= andbT => -> // x y z; apply: ltn_trans.
 Qed.
 
