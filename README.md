@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/thery/lemonde.svg?branch=master)](https://travis-ci.org/thery/lemonde)
+[![Build Status](https://travis-ci.com/thery/lemonde.svg?branch=master)](https://travis-ci.com/thery/lemonde)
 
 
 ## Les énigmes du Monde
