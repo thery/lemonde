@@ -34,14 +34,6 @@ Le Monde en 2013 comme énigmes mathématiques.
 
 ## Building and installation instructions
 
-The easiest way to install the latest released version of lemonde
-is via [OPAM](https://opam.ocaml.org/doc/Install.html):
-
-```shell
-opam repo add coq-released https://coq.inria.fr/opam/released
-opam install coq-lemonde
-```
-
 To instead build and install manually, do:
 
 ``` shell
