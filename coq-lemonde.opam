@@ -1,0 +1,38 @@
+# This file was generated from `meta.yml`, please do not edit manually.
+# Follow the instructions on https://github.com/coq-community/templates to regenerate.
+
+opam-version: "2.0"
+maintainer: "thery@sophia.inria.fr"
+version: "dev"
+
+homepage: "https://github.com/thery/lemonde"
+dev-repo: "git+https://github.com/thery/lemonde.git"
+bug-reports: "https://github.com/thery/lemonde/issues"
+license: "MIT"
+
+synopsis: "Les énigmes du Monde"
+description: """
+Les énigmes du Monde
+
+Une tentative de formaliser en Coq les problèmes proposés par le journal
+Le Monde en 2013 comme énigmes mathématiques.
+
+[Les vidéos](http://www-sop.inria.fr/marelle/Laurent.Thery/LeMonde/index.html)"""
+
+build: [make "-j%{jobs}%"]
+install: [make "install"]
+depends: [
+  "coq" {(>= "8.15")}
+  "coq-mathcomp-ssreflect" {(>= "1.14.0")}
+  "coq-mathcomp-fingroup" {(>= "1.14.0")}
+  "coq-mathcomp-algebra" {(>= "1.14.0")}
+]
+
+tags: [
+  "keyword:lemonde"
+  "keyword:énigme"
+  "logpath:lemonde"
+]
+authors: [
+  "Laurent Théry"
+]

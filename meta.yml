@@ -1,0 +1,65 @@
+---
+fullname: lemonde
+shortname: lemonde
+organization: thery
+community: false
+dune: false
+action: true
+
+synopsis: Les énigmes du Monde
+
+description: |-
+  Les énigmes du Monde
+
+  Une tentative de formaliser en Coq les problèmes proposés par le journal
+  Le Monde en 2013 comme énigmes mathématiques.
+
+  [Les vidéos](http://www-sop.inria.fr/marelle/Laurent.Thery/LeMonde/index.html)
+
+  
+authors:
+- name: Laurent Théry
+
+maintainers:
+- name: Laurent Théry
+  nickname: thery
+
+opam-file-maintainer: thery@sophia.inria.fr
+
+license:
+  fullname: MIT License
+  identifier: MIT
+
+supported_coq_versions:
+  text: '8.15 or later'
+  opam: '{(>= "8.15")}'
+
+dependencies:
+- opam:
+    name: coq-mathcomp-ssreflect
+    version: '{(>= "1.14.0")}'
+  description: |-
+    [MathComp ssreflect 1.14 or later](https://math-comp.github.io)
+- opam:
+    name: coq-mathcomp-fingroup
+    version: '{(>= "1.14.0")}'
+  description: |-
+    [MathComp fingroup 1.14 or later](https://math-comp.github.io)
+- opam:
+    name: coq-mathcomp-algebra
+    version: '{(>= "1.14.0")}'
+  description: |-
+    [MathComp algebra 1.14 or later](https://math-comp.github.io)
+
+tested_coq_opam_versions:
+- version: '1.14.0-coq-8.15'
+  repo: 'mathcomp/mathcomp'
+
+namespace: lemonde
+
+keywords:
+- name: lemonde
+- name: énigme
+
+
+---
