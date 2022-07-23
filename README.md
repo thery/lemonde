@@ -26,15 +26,13 @@ Le Monde en 2013 comme énigmes mathématiques.
 - License: [MIT License](LICENSE)
 - Compatible Coq versions: 8.15 or later
 - Additional dependencies:
-  - [MathComp ssreflect 1.14 or later](https://math-comp.github.io)
-  - [MathComp fingroup 1.14 or later](https://math-comp.github.io)
-  - [MathComp algebra 1.14 or later](https://math-comp.github.io)
+  - [MathComp ssreflect 1.15 or later](https://math-comp.github.io)
+  - [MathComp fingroup 1.15 or later](https://math-comp.github.io)
+  - [MathComp algebra 1.15 or later](https://math-comp.github.io)
 - Coq namespace: `lemonde`
 - Related publication(s): none
 
 ## Building and installation instructions
-
-To instead build and install manually, do:
 
 ``` shell
 git clone https://github.com/thery/lemonde.git
