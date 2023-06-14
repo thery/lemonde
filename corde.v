@@ -850,9 +850,10 @@ Proof. by rewrite /Proba card_N2O card_cvalid. Qed.
 
 Lemma result : Proba 2 = 8%:R / 15%:R.
 Proof.
-apply: etrans (_ : 8%:R * 15%:R / (15%:R * 15%:R) = _).
-  by rewrite ProbaE /= -!natrM -(big_mkord xpredT (fun i =>i.*2.+1)) unlock.
-by rewrite invfM mulrA mulfK.
+apply: etrans (_ : 8%:R * 15%:R / (15%:R * 15%:R) = _); last first.
+  by rewrite invfM mulrA mulfK.
+rewrite ProbaE /=.
+by rewrite -[(2.*2.+1)`!%:R]/120 !big_ord_recr big_ord0.
 Qed.
 
 End Corde.

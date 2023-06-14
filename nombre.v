@@ -369,7 +369,7 @@ Proof.
 move=> m mLr.
 have: result - result <= m < result by rewrite subnn leq0n.
 move: {mLr}m.
-have F : check_less (nat2l result) result = false
+have F : check_less (nat2l result) result = false.
   by vm_cast_no_check (refl_equal false).
 apply: (Pcheck_less F).
 Qed.
