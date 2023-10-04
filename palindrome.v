@@ -1,3 +1,4 @@
+From HB Require Import structures.
 From mathcomp Require Import all_ssreflect all_algebra.
 
 Set Implicit Arguments.
@@ -24,19 +25,10 @@ Inductive  pal_type : predArgType :=
 
 Coercion pval p := let: Pal f _ := p in f.
 
-(* Les structures canoniques associées                                        *)
+(* Les intances associés                                                      *)
 
-Canonical pal_subType := Eval hnf in [subType for pval].
-Definition pal_eqMixin := Eval hnf in [eqMixin of pal_type by <:].
-Canonical pal_eqType := Eval hnf in EqType pal_type pal_eqMixin.
-Definition pal_choiceMixin := [choiceMixin of pal_type by <:].
-Canonical pal_choiceType := Eval hnf in ChoiceType pal_type pal_choiceMixin.
-Definition pal_countMixin := [countMixin of pal_type by <:].
-Canonical pal_countType := Eval hnf in CountType pal_type pal_countMixin.
-Canonical pal_subCountType := Eval hnf in [subCountType of pal_type].
-Definition pal_finMixin := [finMixin of pal_type by <:].
-Canonical pal_finType := Eval hnf in FinType pal_type pal_finMixin.
-Canonical pal_for_subFinType := Eval hnf in [subFinType of pal_type].
+HB.instance Definition _ := [isSub for pval].
+HB.instance Definition _ := [Finite of pal_type by <:].
 
 End Def.
 

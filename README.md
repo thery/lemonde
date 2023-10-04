@@ -24,11 +24,12 @@ Le Monde en 2013 comme énigmes mathématiques.
 - Author(s):
   - Laurent Théry
 - License: [MIT License](LICENSE)
-- Compatible Coq versions: 8.17 or later
+- Compatible Coq versions: 8.18 or later
 - Additional dependencies:
-  - [MathComp ssreflect 1.17 or later](https://math-comp.github.io)
-  - [MathComp fingroup 1.17 or later](https://math-comp.github.io)
-  - [MathComp algebra 1.17 or later](https://math-comp.github.io)
+  - [ Hierarchy Builder 1.6.0 or later](https://github.com/math-comp/hierarchy-builder)
+  - [MathComp ssreflect 2.0.0 or later](https://math-comp.github.io)
+  - [MathComp fingroup 2.0.0 or later](https://math-comp.github.io)
+  - [MathComp algebra 2.0.0 or later](https://math-comp.github.io)
 - Coq namespace: `lemonde`
 - Related publication(s): none
 

@@ -1,4 +1,5 @@
 Require Import Cring.
+From HB Require Import structures.
 From mathcomp Require Import all_ssreflect all_algebra.
 
 Set Implicit Arguments.
@@ -64,8 +65,7 @@ apply: (iffP idP)=> [/and3P[/eqP<- /eqP<- /eqP<-]|[<- <- <- //]] //=.
 by rewrite !eqxx.
 Qed.
 
-Canonical point_eqMixin := EqMixin eq_pointP.
-Canonical point_eqType := Eval hnf in EqType point point_eqMixin.
+HB.instance Definition _ := hasDecEq.Build point eq_pointP.
 
 
 (******************************************************************************)

@@ -1,3 +1,4 @@
+From HB Require Import structures.
 From mathcomp Require Import all_ssreflect all_algebra.
 
 Import GRing.Theory.
@@ -167,8 +168,8 @@ Proof. by move=> x y; apply: eq_from_tnth => i; rewrite !rewL 1?addbC. Qed.
 Lemma addmA : associative %[+].
 Proof. by move=> x y z; apply: eq_from_tnth => i; rewrite !rewL ?addbA. Qed.
 
-Definition addm_zmodMixin := ZmodMixin addmA addmC addFm addmm.
-Canonical addm_zmodType := ZmodType number addm_zmodMixin.
+HB.instance Definition _ := 
+  GRing.isZmodule.Build number addmA addmC addFm addmm.
 
 (* Conversion `[_] de nombre vers entier naturel                              *)
 
