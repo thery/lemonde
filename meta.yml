@@ -42,19 +42,19 @@ dependencies:
     [ Hierarchy Builder 1.6.0 or later](https://github.com/math-comp/hierarchy-builder)
 - opam:
     name: coq-mathcomp-ssreflect
-    version: '{(>= "2.0.0")}'
+    version: '{(>= "2.1.0")}'
   description: |-
-    [MathComp ssreflect 2.0.0 or later](https://math-comp.github.io)
+    [MathComp ssreflect 2.1.0 or later](https://math-comp.github.io)
 - opam:
     name: coq-mathcomp-fingroup
-    version: '{(>= "2.0.0")}'
+    version: '{(>= "2.1.0")}'
   description: |-
-    [MathComp fingroup 2.0.0 or later](https://math-comp.github.io)
+    [MathComp fingroup 2.1.0 or later](https://math-comp.github.io)
 - opam:
     name: coq-mathcomp-algebra
-    version: '{(>= "2.0.0")}'
+    version: '{(>= "2.1.0")}'
   description: |-
-    [MathComp algebra 2.0.0 or later](https://math-comp.github.io)
+    [MathComp algebra 2.1.0 or later](https://math-comp.github.io)
 
 tested_coq_opam_versions:
 - version: '2.0.0-coq-8.18'

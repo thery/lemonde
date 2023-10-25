@@ -27,23 +27,15 @@ Le Monde en 2013 comme énigmes mathématiques.
 - Compatible Coq versions: 8.18 or later
 - Additional dependencies:
   - [ Hierarchy Builder 1.6.0 or later](https://github.com/math-comp/hierarchy-builder)
-  - [MathComp ssreflect 2.0.0 or later](https://math-comp.github.io)
-  - [MathComp fingroup 2.0.0 or later](https://math-comp.github.io)
-  - [MathComp algebra 2.0.0 or later](https://math-comp.github.io)
+  - [MathComp ssreflect 2.1.0 or later](https://math-comp.github.io)
+  - [MathComp fingroup 2.1.0 or later](https://math-comp.github.io)
+  - [MathComp algebra 2.1.0 or later](https://math-comp.github.io)
 - Coq namespace: `lemonde`
 - Related publication(s): none
 
 ## Building and installation instructions
 
-The easiest way to install the latest released version of lemonde
-is via [OPAM](https://opam.ocaml.org/doc/Install.html):
-
-```shell
-opam repo add coq-released https://coq.inria.fr/opam/released
-opam install coq-lemonde
-```
-
-To instead build and install manually, do:
+To build and install manually, do:
 
 ``` shell
 git clone https://github.com/thery/lemonde.git

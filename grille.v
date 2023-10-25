@@ -134,7 +134,7 @@ Definition all_max :=
   get_max 9 0 (fun l => w_val (f_of_l l)) [::].
 
 Lemma all_max_57 : all_max = 57.
-Proof. by vm_compute. Qed.
+Proof. Time by vm_compute. Qed.
 
 (******************************************************************************)
 (*                                                                            *)
