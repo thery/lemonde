@@ -1,4 +1,4 @@
-From mathcomp Require Import all_ssreflect all_algebra all_fingroup.
+From mathcomp Require Import all_ssreflect zmodp all_fingroup.
 
 Set Implicit Arguments.
 Unset Strict Implicit.
@@ -85,20 +85,20 @@ Definition walk := 'S_9.
 
 Definition w_update g (w : index -> index) :=
  (* on ajoute tous d'abord deux 1                                             *)
- (let g0 := o_update g  (w 0%:R) in
-  let g1 := o_update g0 (w 1%:R) in
+  let g0 := o_update g  (w (inZp 0)) in
+  let g1 := o_update g0 (w (inZp 1)) in
  (* et ensuite des sommes                                                     *)
-  let g2 := s_update g1 (w 2%:R) in
-  let g3 := s_update g2 (w 3%:R) in
-  let g4 := s_update g3 (w 4%:R) in
-  let g5 := s_update g4 (w 5%:R) in
-  let g6 := s_update g5 (w 6%:R) in
-  let g7 := s_update g6 (w 7%:R) in
-  let g8 := s_update g7 (w 8%:R) in
-  g8)%R.
+  let g2 := s_update g1 (w (inZp 2)) in
+  let g3 := s_update g2 (w (inZp 3)) in
+  let g4 := s_update g3 (w (inZp 4)) in
+  let g5 := s_update g4 (w (inZp 5)) in
+  let g6 := s_update g5 (w (inZp 6)) in
+  let g7 := s_update g6 (w (inZp 7)) in
+  let g8 := s_update g7 (w (inZp 8)) in
+  g8.
 
 Definition w_val w :=
-  let g1 := w_update grid0 w in get g1 (w 8%:R)%R.
+  let g1 := w_update grid0 w in get g1 (w (inZp 8)).
 
 (* Ce que l'on veut prouver \max_(w : path) (w_val w) = 53, on fait cela par  *)
 (* du calcul prouvé                                                           *)
@@ -122,7 +122,7 @@ Fixpoint insertl A (i : A) (l : seq A) : seq (seq A) :=
 
 Fixpoint get_max (n m : nat) (max : nat) f (l : seq 'I_m.+2)  :=
   if n is n1.+1 then
-  let ls := insertl (n1%:R)%R l in
+  let ls := insertl (inZp n1) l in
   foldr (fun l max => get_max n1 max f l) max ls
   else maxn max (f l).
 
@@ -264,7 +264,8 @@ Qed.
 Lemma result : \max_(w : walk) (w_val w) = 57.
 Proof.
 apply/eqP; rewrite eqn_leq; apply/andP; split; last first.
-  pose l : seq 'I_9 := ([::0%:R;2%:R;1%:R;3%:R;4%:R;6%:R;7%:R;5%:R;8%:R])%R.
+  pose l : seq 'I_9 := [:: inZp 0; inZp 2; inZp 1; inZp 3;
+                            inZp 4; inZp 6; inZp 7; inZp 5; inZp 8].
   have Il :  injectiveb [ffun i => f_of_l l i].
     apply: perm_proof => [].
     by (do 10 try case => //) => i; (do 10 try case => //) => j;
@@ -285,10 +286,10 @@ elim: n l m => /= [|k IH] l v Es Ol Ltk.
   move/eqP: Es; rewrite addn0 (ordLS_enum Ol) => /eqP->.
   set f := f_of_l _; suff /w_val_eq-> : f =1 p by apply: leq_maxr.
   by move=> i; rewrite /f /f_of_l (nth_map ord0) ?size_enum_ord // nth_ord_enum.
-have kE : (k%:R : 'I_9)%R = k :> nat.
+have kE : (inZp k : 'I_9) = k :> nat.
   have kL9 : k < 9 by rewrite -Es addnS ltnS leq_addl.
-  by rewrite (natr_Zp (Ordinal kL9)).
-have kNIl : (k%:R)%R \notin l by apply/negP => /Ltk; rewrite kE ltnn.
+  by rewrite /inZp /= modn_small.
+have kNIl : (inZp k) \notin l by apply/negP => /Ltk; rewrite kE ltnn.
 have [l1 /andP[l1Ii Ol1]] := insertl_ordLS kNIl Ol.
 have HH  : forall v,  w_val p <= get_max k v (fun l => w_val (f_of_l l)) l1.
   move=> v1; apply: IH => //.
