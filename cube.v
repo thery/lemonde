@@ -269,22 +269,22 @@ pose v := a1 * c3 - a3 * c1.
 pose w := b1 * c3 - b3 * c1.
 have F1 : v * (x1 - x2)- -w * (y1 - y2) = 0.
   have<-: c3 * (d1 - d1) - c1 * (d3 - d3)= 0 by cring.
-  by rewrite -{1}P1 -P2 -{1}P3 -P4; cring.
+  rewrite -{1}P1 -P2 -{1}P3 -P4 /v /w; cring.
 have F2 : u * (x1 - x2) - w * (z1 - z2) = 0.
   have<-: b3 * (d1 - d1) - b1 * (d3 - d3)= 0 by cring.
-  by rewrite -{1}P1 -P2 -{1}P3 -P4; cring.
+  by rewrite -{1}P1 -P2 -{1}P3 -P4 /u /w; cring.
 have F3 : - u * (y1 - y2)- v * (z1 - z2) = 0.
   have<-: a3 * (d1 - d1) - a1 * (d3 - d3)= 0 by cring.
-  rewrite -{1}P1 -P2 -{1}P3 -P4; cring.
+  rewrite -{1}P1 -P2 -{1}P3 -P4 /u /v; cring.
 have F4 : v * (x3 - x4) - - w * (y3 - y4) = 0.
   have<-: c3 * (d4 - d4) - c1 * (d3 - d3)= 0 by cring.
-  rewrite -{1}P5 -P6 -{1}P7 -P8; cring.
+  rewrite -{1}P5 -P6 -{1}P7 -P8 /v /w; cring.
 have F5 : u * (x3 - x4)- w * (z3 - z4) = 0.
   have<-: b3 * (d4 - d4) - b1 * (d3 - d3)= 0 by cring.
-  by rewrite -{1}P5 -P6 -{1}P7 -P8; cring.
+  by rewrite -{1}P5 -P6 -{1}P7 -P8 /u /w; cring.
 have F6 : -u * (y3 - y4) - v * (z3 - z4) = 0.
   have<-: a3 * (d4 - d4) - a1 * (d3 - d3)= 0 by cring.
-  rewrite -{1}P5 -P6 -{1}P7 -P8; cring.
+  rewrite -{1}P5 -P6 -{1}P7 -P8 /u /v; cring.
 have: [||u != 0, v != 0 | w != 0] by rewrite !subr_eq0 -!negb_and.
 case: (boolP (u == 0))=> [/eqP uZ | uNZ];  
     rewrite ?uZ ?(oppr0, mul0r, sub0r, subr0) in F2 F3 F5 F6.

@@ -31,33 +31,28 @@ license:
   identifier: MIT
 
 supported_coq_versions:
-  text: '8.18 or later'
+  text: '8.9 or later'
   opam: '{(>= "8.18")}'
 
 dependencies:
 - opam:
-    name: coq-hierarchy-builder
-    version: '{(>= "1.6.0")}'
-  description: |- 
-    [ Hierarchy Builder 1.6.0 or later](https://github.com/math-comp/hierarchy-builder)
-- opam:
     name: coq-mathcomp-ssreflect
-    version: '{(>= "2.1.0")}'
+    version: '{(>= "2.2.0")}'
   description: |-
-    [MathComp ssreflect 2.1.0 or later](https://math-comp.github.io)
+    [MathComp ssreflect 2.2.0 or later](https://math-comp.github.io)
 - opam:
     name: coq-mathcomp-fingroup
-    version: '{(>= "2.1.0")}'
+    version: '{(>= "2.2.0")}'
   description: |-
-    [MathComp fingroup 2.1.0 or later](https://math-comp.github.io)
+    [MathComp fingroup 2.2.0 or later](https://math-comp.github.io)
 - opam:
     name: coq-mathcomp-algebra
-    version: '{(>= "2.1.0")}'
+    version: '{(>= "2.2.0")}'
   description: |-
-    [MathComp algebra 2.1.0 or later](https://math-comp.github.io)
+    [MathComp algebra 2.2.0 or later](https://math-comp.github.io)
 
 tested_coq_opam_versions:
-- version: '2.1.0-coq-8.18'
+- version: '2.2.0-coq-8.19'
   repo: 'mathcomp/mathcomp'
 
 namespace: lemonde

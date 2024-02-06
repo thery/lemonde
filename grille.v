@@ -303,3 +303,4 @@ by apply: leq_trans (IH1 _) (leq_get_max _ _ _ _).
 Qed.
 
 End Grid.
+  
