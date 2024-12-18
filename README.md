@@ -24,7 +24,7 @@ Le Monde en 2013 comme énigmes mathématiques.
 - Author(s):
   - Laurent Théry
 - License: [MIT License](LICENSE)
-- Compatible Coq versions: 8.19 or later
+- Compatible Coq versions: 8.20 or later
 - Additional dependencies:
   - [MathComp ssreflect 2.3.0 or later](https://math-comp.github.io)
   - [MathComp fingroup 2.3.0 or later](https://math-comp.github.io)

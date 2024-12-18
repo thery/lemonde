@@ -177,10 +177,10 @@ Fixpoint num2nat (n : nat) (l : seq bool) :=
   if n is m1.+1 then 2^ m1 * head false l + num2nat m1 (behead l)
   else 0.
 
-Notation "`[ m ]_ n" := (num2nat n m) (at level 40).
+Notation " `@[ m ]_ n" := (num2nat n m) (at level 40).
 
 Lemma num2natE (m : n.-tuple bool) :
-  `[m]_n =  \sum_(i < n) 2 ^ (n.-1 - i) * tnth m i.
+  `@[m]_n =  \sum_(i < n) 2 ^ (n.-1 - i) * tnth m i.
 Proof.
 elim: n m => /= [l|n1 IH l]; first by rewrite big_ord0.
 rewrite (IH [tuple of behead l]) [l]tuple_eta /= /num2nat.
@@ -190,10 +190,10 @@ apply: eq_bigr=> i _; rewrite !rewL lift0 /=.
 by rewrite /bump /=  add1n -subn1 -subnDA add1n.
 Qed.
 
-Lemma num2natF : `[F]_n = 0.
+Lemma num2natF : `@[F]_n = 0.
 Proof. by rewrite num2natE big1 => // i; rewrite !rewL muln0. Qed.
 
-Lemma num2nat_eqF0 (m : number) :  (`[m]_n  == 0) = (m == F).
+Lemma num2nat_eqF0 (m : number) :  (`@[m]_n  == 0) = (m == F).
 Proof.
 apply/eqP/eqP=> [|->]; last by rewrite num2natF.
 rewrite /falsem.
@@ -245,7 +245,7 @@ apply/val_eqP/eqP=> /=; elim: n => [|n1 /= ->] //=.
 by elim: n1 => //= n1 ->.
 Qed.
 
-Lemma nat2numK v : v < 2 ^ n -> `[`{v}_n ]_n = v.
+Lemma nat2numK v : v < 2 ^ n -> `@[ `{v}_n ]_n = v.
 Proof.
 rewrite num2natE; elim: n v => [[_|[|v]] |n1 IH v Hv] //=.
   by rewrite big_ord0.
@@ -280,12 +280,12 @@ have: 2 ^ 0 < 2 ^ n2.+1 by rewrite ltn_exp2l.
 by case: (_ ^ _.+1)%nat => // [[|n3]] //=; rewrite [_ - _]subn0 addn1.
 Qed.
 
-Lemma num2natK (v : number) : `{`[v]_n }_n = v.
+Lemma num2natK (v : number) : `{`@[v]_n }_n = v.
 Proof.
 apply: eq_from_tnth => i.
 have nPos : 0 < n by apply: leq_trans (ltn_ord i).
 pose F (m : number) i :=  2 ^ (n.-1 - i) * nth false m i.
-have sE : forall m : number, `[m]_n = \sum_(0 <= i < n) F m i.
+have sE : forall m : number, `@[m]_n = \sum_(0 <= i < n) F m i.
   move=> m; rewrite big_mkord num2natE; apply: eq_bigr => // i1.
   by rewrite /num2nat /= rewL.
 rewrite sE nth_nat2num.
@@ -339,11 +339,11 @@ Qed.
 (* Lemme clé qui va assurer que le nombre d'allumettes décroit                *)
 
 Lemma ltn_num_addm m1 m2 (i : 'I_n) :
-   hbit m1 = i -> tnth m2 i = true -> `[m1 [+] m2]_n < `[m2]_n.
+   hbit m1 = i -> tnth m2 i = true -> `@[m1 [+] m2]_n < `@[m2]_n.
 Proof.
 move=> hbE Tt.
 pose F (m : number) i :=  2 ^ (n.-1 - i) * nth false m i.
-have sE : forall m : number, `[m]_n = \sum_(0 <= i < n) F m i.
+have sE : forall m : number, `@[m]_n = \sum_(0 <= i < n) F m i.
   move=> m; rewrite big_mkord num2natE; apply: eq_bigr => // i1.
   by rewrite /num2nat /= rewL.
 pose F1 := big_cat_nat _  _  _  (leq0n i) (ltnW (ltn_ord i)).
