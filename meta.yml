@@ -52,7 +52,7 @@ dependencies:
     [MathComp algebra 2.3.0 or later](https://math-comp.github.io)
 
 tested_coq_opam_versions:
-- version: '2.3.0-coq-8.19'
+- version: '2.3.0-coq-8.20'
   repo: 'mathcomp/mathcomp'
 
 namespace: lemonde
