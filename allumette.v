@@ -266,7 +266,7 @@ Qed.
 Lemma sum_pow2 k n1 : \sum_(k <= j < n1) 2 ^ (n1.-1 - j) = (2 ^ (n1 - k)).-1.
 Proof.
 rewrite -{1}[k]add0n big_addn.
-pose F i := 2 ^ ((n1 - k).-1 - i).
+pose F i := (2 ^ ((n1 - k).-1 - i))%nat.
 rewrite (eq_bigr _  (_ : forall i, _ -> _ = F i)) {}/F //; last first.
   by move=> i; rewrite addnC subnDA {}/F; case: n1 => //= n1; rewrite subSKn.
 elim: (_ - _) => [|n2 IH]; first by rewrite big_geq.
@@ -277,7 +277,7 @@ rewrite (eq_bigr _  (_ : forall i, _ -> _ = F i)) {}/F //; last first.
   by rewrite -expnS subSn. 
 rewrite -big_nat_cond -big_distrr /= IH -subn1 mulnBr muln1 -expnS.
 have: 2 ^ 0 < 2 ^ n2.+1 by rewrite ltn_exp2l.
-by case: (_ ^ _.+1) => // [[|n3]] //=; rewrite [_ - _]subn0 addn1.
+by case: (_ ^ _.+1)%nat => // [[|n3]] //=; rewrite [_ - _]subn0 addn1.
 Qed.
 
 Lemma num2natK (v : number) : `{`[v]_n }_n = v.
@@ -298,7 +298,7 @@ have F1 (m : number) j : (0 <= j < i) && true ->
 rewrite (eq_bigr _ (F1 v)) -big_distrr /= -mulnDr mulnC divnMDl ?expn_gt0 //.
 rewrite divn_small; last first.
   rewrite -subSS [n.-1.+1](ltn_predK (_ : 0 < _)) //.
-  rewrite -[_ ^ _](ltn_predK (_ : 0 < _)) ?expn_gt0 // ltnS -sum_pow2.
+  rewrite -[(_ ^ _)%nat](ltn_predK (_ : 0 < _)) ?expn_gt0 // ltnS -sum_pow2.
   by apply: leq_sum=> j _; rewrite /F; case: nth; rewrite ?muln0 ?muln1.
 have F2 (m : number) j : (0 <= j < i) && true ->
      2 ^ (i - j) * nth false m j =  2 * (2 ^ (i.-1 - j) * nth false m j).

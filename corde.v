@@ -479,10 +479,10 @@ Qed.
 
 (* Cardinal des configurations                                                *)
 
-Lemma card_cvalid n : #|'N2[n.+1.*2]| = (\prod_(i < n.+1) i.*2.+1) ^ 2.
+Lemma card_cvalid n : #|'N2[n.+1.*2]| = ((\prod_(i < n.+1) i.*2.+1) ^ 2)%nat.
 Proof. by rewrite cardsX card_is_node. Qed.
 
-Fact card_cvalid6 : #|'N2[6]| = 15 ^ 2.
+Fact card_cvalid6 : #|'N2[6]| = (15 ^ 2)%nat.
 Proof. 
 by rewrite (card_cvalid 2) -(big_mkord xpredT (fun i =>i.*2.+1)) unlock.
 Qed.
